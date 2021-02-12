@@ -1,0 +1,5 @@
+name: GameAPI
+version: 1.0
+author: Auftraggeber
+api-version: 13
+main: me.langner.jonas.game.api.GameAPI
