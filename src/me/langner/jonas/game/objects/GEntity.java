@@ -1,4 +1,4 @@
 package me.langner.jonas.game.objects;
 
-public abstract class GEntity implements GObject {
+public abstract class GEntity extends GObject {
 }
