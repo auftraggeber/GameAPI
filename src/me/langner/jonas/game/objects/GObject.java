@@ -1,7 +1,5 @@
 package me.langner.jonas.game.objects;
 
-import me.langner.jonas.game.Game;
-
 /**
  * Class for all objects of the gameAPI.
  * @author Jonas Langner
@@ -9,6 +7,12 @@ import me.langner.jonas.game.Game;
  * @since 12.02.2021 (Alpha)
  */
 public abstract class GObject {
+
+    private Game game;
+
+    public GObject(Game game) {
+        addToGame(game);
+    }
 
     /**
      * Gets called if this object gets added to a game.
@@ -27,7 +31,12 @@ public abstract class GObject {
      * @param game The game.
      */
     public void addToGame(Game game) {
+        /* entfernen, wenn noch anderes Spiel */
+        if (this.game != null)
+            removeFromGame(this.game);
+
         game.addGameObject(this);
+        this.game = game;
     }
 
     /**
@@ -36,8 +45,10 @@ public abstract class GObject {
      */
     public void removeFromGame(Game game) {
         game.removeObject(this);
+        this.game = null;
     }
 
-
-
+    public Game getGame() {
+        return game;
+    }
 }

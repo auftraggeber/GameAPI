@@ -1,4 +1,4 @@
-package me.langner.jonas.game;
+package me.langner.jonas.game.objects;
 
 /**
  * Handles different states of a game.

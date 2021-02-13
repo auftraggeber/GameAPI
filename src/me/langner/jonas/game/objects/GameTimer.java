@@ -1,4 +1,4 @@
-package me.langner.jonas.game;
+package me.langner.jonas.game.objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;

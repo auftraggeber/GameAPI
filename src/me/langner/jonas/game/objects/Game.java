@@ -1,7 +1,4 @@
-package me.langner.jonas.game;
-
-import me.langner.jonas.game.objects.GObject;
-import me.langner.jonas.game.objects.GPlayer;
+package me.langner.jonas.game.objects;
 
 import java.util.*;
 
@@ -14,7 +11,6 @@ import java.util.*;
 public abstract class Game {
 
     private LinkedList<GameState> states = new LinkedList<>();
-    private Set<GPlayer> players = new HashSet<>();
     private GameState state;
 
     private String name;
@@ -76,18 +72,18 @@ public abstract class Game {
      */
     private boolean start(StartAction action) {
         /* überprüfen, ob gestartet werden kann */
-        if (players.size() < minPlayers)
+        if (getGameObjects(GPlayer.class).size() < minPlayers)
             return false; // zu wenig spieler
 
         /* event übergeben */
-        return onStartGame(action, players.size());
+        return onStartGame(action, getGameObjects(GPlayer.class).size());
     }
 
     /**
      * Adds a object to registered objects.
      * @param object The object to add.
      */
-    public void addGameObject(GObject object) {
+    protected void addGameObject(GObject object) {
         /* hinzufügen, wenn nicht schon hinzugefügt */
         if (!gameObjects.contains(object))
             gameObjects.add(object);
@@ -100,7 +96,7 @@ public abstract class Game {
      * Removes a object from registered objects.
      * @param object The object to remove.
      */
-    public void removeObject(GObject object) {
+    protected void removeObject(GObject object) {
         /* solange entfernen, bis nicht mehr enthalten */
         while (gameObjects.contains(object))
             gameObjects.remove(object);
